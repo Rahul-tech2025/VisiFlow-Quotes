@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="./output.css" rel="stylesheet" />
+  <title>VisiFlow Quotes</title>
+</head>
+
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+  <div class="bg-white p-6 rounded-xl w-96 shadow-xl">
+    <h1 class="text-2xl font-bold mb-4 text-center">VisiFlow Quotes</h1>
+
+    <select id="mood" class="w-full p-2 border rounded mb-4">
+      <option value="happy">Happy</option>
+      <option value="sad">Sad</option>
+      <option value="stressed">Stressed</option>
+      <option value="angry">Angry</option>
+      <option value="neutral">Neutral</option>
+    </select>
+
+    <button onclick="getQuote()" 
+            class="bg-blue-600 text-white p-2 rounded w-full hover:bg-blue-700">
+      Get Quote
+    </button>
+
+    <p id="result" class="text-center mt-4 text-lg font-semibold"></p>
+  </div>
+
+  <script>
+    async function getQuote() {
+      const mood = document.getElementById("mood").value;
+
+      const response = await fetch("http://localhost:5000/quote", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ mood }),
+      });
+
+      const data = await response.json();
+      document.getElementById("result").innerText = data.quote;
+    }
+  </script>
+</body>
+</html>
