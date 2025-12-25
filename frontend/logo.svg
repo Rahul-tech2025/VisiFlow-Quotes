@@ -1,0 +1,30 @@
+<svg width="300" height="80" viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="spaceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8A2BE2"/>
+      <stop offset="50%" stop-color="#6D28D9"/>
+      <stop offset="100%" stop-color="#00BFFF"/>
+    </linearGradient>
+
+    <filter id="neonGlow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <style>
+      @keyframes neonPulse {
+        0% { opacity: 0.75; filter: drop-shadow(0 0 3px #a855f7); }
+        50% { opacity: 1; filter: drop-shadow(0 0 10px #c084fc); }
+        100% { opacity: 0.75; filter: drop-shadow(0 0 3px #a855f7); }
+      }
+    </style>
+  </defs>
+
+  <text x="10" y="55" font-size="50" font-family="Poppins" fill="url(#spaceGrad)"
+    filter="url(#neonGlow)" style="animation: neonPulse 2.2s infinite;">
+    VisiFlow
+  </text>
+</svg>
