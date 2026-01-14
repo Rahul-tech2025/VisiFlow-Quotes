@@ -7,145 +7,87 @@
   border-top-color: transparent;
   animation: warpSpin 1s linear infinite, warpPulse 2s ease-in-out infinite;
 }
-
 @keyframes warpSpin { 
   from { transform: rotate(0); } 
   to { transform: rotate(360deg); }
 }
-
 @keyframes warpPulse {
   0% { box-shadow: 0 0 5px #a855f7; }
   50% { box-shadow: 0 0 30px #c084fc; }
   100% { box-shadow: 0 0 5px #a855f7; }
 }
 
-/* ========================= STARFIELD (CSS ONLY, NO IMAGES) ========================= */
+/* Stars */
+@keyframes stars {
+  0% { background-position: 0 0; }
+  100% { background-position: -2000px 2000px; }
+}
 #stars {
-  position: absolute;
-  inset: 0;
-  background: transparent;
-  overflow: hidden;
-}
-
-#stars::before, #stars::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(white 1px, transparent 1px);
-  background-size: 3px 3px;
-  opacity: 0.35;
-  animation: starMove 140s linear infinite;
-}
-
-@keyframes starMove {
-  from { transform: translate(0,0); }
-  to { transform: translate(3000px,3000px); }
+  background-image: url("https://raw.githubusercontent.com/rajatdiptabiswas/AssetsCDN/main/stars/starfield.png");
+  background-size: cover;
+  animation: stars 80s linear infinite;
 }
 
 /* Aurora */
 @keyframes aurora {
-  0% { opacity: 0.25; transform: translateY(0); }
-  50% { opacity: 0.45; transform: translateY(-40px); }
-  100% { opacity: 0.25; transform: translateY(0); }
+  0% { opacity: 0.2; transform: translateY(0); }
+  50% { opacity: 0.45; transform: translateY(-20px); }
+  100% { opacity: 0.2; transform: translateY(0); }
 }
-.animate-aurora {
-  background: linear-gradient(120deg, transparent, #a855f733, transparent);
-  filter: blur(80px);
-  animation: aurora 10s ease-in-out infinite;
-}
+.animate-aurora { animation: aurora 6s ease-in-out infinite; }
 
-/* ========================= NEBULA (CSS Gradient Only) ========================= */
-.animate-swirl {
-  background:
-    radial-gradient(circle at 30% 40%, #7c3aed66, transparent 60%),
-    radial-gradient(circle at 70% 60%, #4c1d95aa, transparent 70%),
-    radial-gradient(circle at center, #2d0b77, #000);
-  animation: swirl 30s linear infinite;
-}
-
+/* Nebula swirl */
 @keyframes swirl {
-  0% { transform: scale(1) rotate(0deg); opacity: 0.6; }
-  50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
-  100% { transform: scale(1) rotate(360deg); opacity: 0.6; }
+  0% { transform: rotate(0) scale(1); opacity: 0.4; }
+  50% { transform: rotate(180deg) scale(1.3); opacity: 0.8; }
+  100% { transform: rotate(360deg) scale(1); opacity: 0.4; }
 }
+.animate-swirl { animation: swirl 25s linear infinite; }
 
-/* ========================= SMOOTH METEORS ========================= */
+/* Meteors */
 .meteor {
   position: absolute;
   width: 2px;
   height: 80px;
-  background: linear-gradient(white, transparent);
-  opacity: 0.25;
+  background: linear-gradient(to bottom, white, transparent);
+  opacity: 0.75;
   transform: rotate(45deg);
-  animation: meteorFall 14s linear infinite;
+  animation: meteorFall 2.2s linear infinite;
 }
-
 @keyframes meteorFall {
-  0% { transform: translate(-20vw,-20vh) rotate(45deg); opacity: 0; }
-  15% { opacity: 0.4; }
-  100% { transform: translate(60vw,80vh) rotate(45deg); opacity: 0; }
+  from { transform: translate(-10vw, -10vh) rotate(45deg); }
+  to { transform: translate(60vw, 80vh) rotate(45deg); }
 }
 
-/* ========================= PLANETS (PURE CSS, NO IMAGES) ========================= */
+/* Old float planets (kept for code matching) */
 .planet {
   position: absolute;
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #c084fc, #6a00ff, #1a0033);
-  box-shadow: 0 0 30px #a855f7bb, inset 0 0 40px #ffffff22;
-  animation: floatPlanet 12s ease-in-out infinite;
-  opacity: 0.75;
+  width: 120px;
+  opacity: 0.7;
+  animation: float 10s ease-in-out infinite;
+}
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
 }
 
-.planet1 { top: 10%; left: 5%; }
-.planet2 { bottom: 10%; right: 5%; animation-duration: 18s; }
-
-@keyframes floatPlanet {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-25px) scale(1.05); }
-}
-
-/* ========================= Orbit Rings ========================= */
+/* Orbit rings */
 .planet-orbit {
   position: absolute;
-  border: 2px dashed #a855f733;
+  border: 2px dashed #a855f755;
   border-radius: 50%;
-  animation: orbitRotate 22s linear infinite;
+  animation: orbitRotate 20s linear infinite;
+  pointer-events: none;
 }
-
-.orbit1 { width: 300px; height: 300px; top: 15%; left: 5%; }
-.orbit2 { width: 200px; height: 200px; bottom: 15%; right: 5%; }
-
-@keyframes orbitRotate {
-  from { transform: rotate(0deg); }
+.orbit1 { width: 300px; height: 300px; top: 20%; left: 10%; }
+.orbit2 { width: 200px; height: 200px; bottom: 15%; right: 10%; }
+@keyframes orbitRotate { 
+  from { transform: rotate(0); } 
   to { transform: rotate(360deg); }
 }
 
-/* ========================= SHOOTING STAR ========================= */
-.shooting-star::before {
-  content: "";
-  position: fixed;
-  top: -50px;
-  left: -50px;
-  width: 2px;
-  height: 120px;
-  background: linear-gradient(white, transparent);
-  opacity: 0;
-  transform: rotate(45deg);
-}
-
-.shooting-star.active::before {
-  animation: shoot 2.5s ease-out;
-}
-
-@keyframes shoot {
-  0% { opacity: 0; transform: translate(-50px,-50px) rotate(45deg); }
-  20% { opacity: 1; }
-  100% { transform: translate(130vw,130vh) rotate(45deg); opacity: 0; }
-}
-
-/* Floating Card Animation */
+/* Card float */
 .cardFloat {
   animation: cardFloat 6s ease-in-out infinite;
 }
@@ -154,7 +96,7 @@
   50% { transform: translateY(-10px); }
 }
 
-/* Cursor Trail */
+/* Cursor trail */
 .cursor-dot {
   position: absolute;
   width: 10px;
@@ -175,6 +117,59 @@
 body.light {
   background: #f5f5f5;
   color: black;
+}
+
+/* 🌕 NEW PLANET SYSTEM — NEON GLOW + SMOOTH ROTATION */
+.planet-wrap {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  padding: 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 3px solid rgba(255,255,255,0.45);
+  box-shadow: 
+    0 0 25px rgba(255,255,255,0.45),
+    0 0 45px rgba(180,180,255,0.25),
+    0 0 70px rgba(200,200,255,0.15);
+
+  animation: neon-rotate 20s linear infinite;
+}
+
+@keyframes neon-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ⭐ ONLY ZOOM CHANGE HERE */
+.planet-img {
+  width: 122%;
+  height: 122%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+.planet2-img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  object-position: center;
+ 
+  
+}
+
+
+/* Position planets */
+.planet1-wrap { top: 10%; left: 5%; }
+.planet2-wrap { bottom: 12%; right: 6%; }
+
+/* More visible in dark */
+.planet2-wrap img {
+  filter: brightness(1) contrast(1);
 }
 
 @tailwind base;

@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VisiFlow Quotes – Galaxy Ultra</title>
   <link rel="stylesheet" href="output.css" />
-
-  <!-- Save as Image Library -->
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </head>
 
 <body class="relative min-h-screen overflow-hidden bg-black text-white">
+
+  <!-- SINGLE SHOOTING STAR -->
   <div class="shooting-star"></div>
 
-  <!-- 🚀 LOADING SCREEN -->
+  <!-- 🚀 LOADING -->
   <div id="loadingScreen"
     class="fixed inset-0 flex justify-center items-center bg-black z-50">
     <div class="warp-circle"></div>
@@ -24,30 +24,32 @@
 
   <!-- 🔄 THEME SWITCH -->
   <button id="themeBtn"
-    class="fixed top-6 left-6 z-50 px-4 py-2 bg-white/20 backdrop-blur-xl rounded-xl shadow-lg 
-    hover:bg-white/30 transition">
+    class="fixed top-6 left-6 z-50 px-4 py-2 bg-white/20 backdrop-blur-xl 
+    rounded-xl shadow-lg hover:bg-white/30 transition">
     🔄 Theme
   </button>
 
-  <!-- 🌙 DARK MODE -->
+  <!-- 🌙 DARK/LIGHT MODE -->
   <button id="toggleMode"
-    class="fixed top-6 right-6 z-50 px-4 py-2 bg-white/20 backdrop-blur-xl rounded-xl shadow-lg 
-    hover:bg-white/30 transition">
-    🌙 Mode
+    class="fixed top-6 right-6 z-50 px-4 py-2 bg-white/20 backdrop-blur-xl 
+    rounded-xl shadow-lg hover:bg-white/30 transition">
+    ☀️ Light Mode
   </button>
 
   <!-- 🎵 MUSIC TOGGLE -->
   <button id="musicBtn"
-    class="fixed top-20 right-6 z-50 px-4 py-2 bg-white/20 backdrop-blur-xl rounded-xl shadow-lg 
-    hover:bg-white/30 transition">
+    class="fixed top-20 right-6 z-50 px-4 py-2 bg-white/20 backdrop-blur-xl 
+    rounded-xl shadow-lg hover:bg-white/30 transition">
     🎵 Music
   </button>
 
-  <!-- CLICK + MUSIC AUDIO -->
+  <!-- CLICK SOUND -->
   <audio id="clickSound" src="assets/sfx/soft-click.mp3" preload="auto"></audio>
+
+  <!-- BACKGROUND MUSIC -->
   <audio id="bgMusic" src="assets/music/lofi-space-bg.mp3" preload="auto" loop></audio>
 
-  <!-- ⭐ STARFIELD -->
+  <!-- ⭐ STARS -->
   <div id="stars" class="absolute inset-0 animate-stars opacity-40"></div>
 
   <!-- 🌌 AURORA -->
@@ -66,38 +68,39 @@
   <!-- 🌀 NEBULA -->
   <div id="nebula" class="absolute inset-0 bg-[radial-gradient(circle_at_center,#4b1fa777,#000)] animate-swirl"></div>
 
-  <!-- 🪐 ORBIT RINGS -->
-  <div class="planet-orbit orbit1"></div>
-  <div class="planet-orbit orbit2"></div>
+  <!-- 🪐 NEW PLANET SYSTEM (LOCAL IMAGES) -->
+  <div class="planet-wrap planet1-wrap">
+    <img src="assets2/planet1.png" class="planet-img" />
+  </div>
 
-  <!-- FLOATING PLANETS -->
-  <img src="https://raw.githubusercontent.com/rajatdiptabiswas/AssetsCDN/main/planets/planet1.png"
-       class="planet planet1" />
-  <img src="https://raw.githubusercontent.com/rajatdiptabiswas/AssetsCDN/main/planets/planet2.png"
-       class="planet planet2" />
+  <div class="planet-wrap planet2-wrap">
+    <img src="assets2/planet2.png" class="planet2-img" />
+  </div>
 
-  <!-- PARALLAX LAYER -->
+  <!-- PARALLAX -->
   <div id="parallax" class="absolute inset-0"></div>
 
   <!-- MAIN CARD -->
   <div class="relative z-20 w-full max-w-md mx-auto mt-[15vh]
-      backdrop-blur-2xl bg-white/10 border border-white/20
-      rounded-3xl shadow-[0_0_55px_#a855f788] 
-      p-8 text-center animate-fadeIn cardFloat">
+      backdrop-blur-2xl bg-white/10 border border-white/20 rounded-3xl 
+      shadow-[0_0_55px_#a855f788] p-8 text-center animate-fadeIn cardFloat">
 
-    <!-- LOGO -->
     <img src="logo.svg" class="w-48 mx-auto mb-6 animate-logo"/>
 
-    <!-- Mood Dropdown -->
     <select id="mood"
-      class="w-full p-3 rounded-xl bg-white/10 text-white border border-white/20 
-      focus:border-purple-400 backdrop-blur-xl mb-4">
-      <option value="happy" class="text-black">Happy</option>
-      <option value="sad" class="text-black">Sad</option>
-      <option value="motivational" class="text-black">Motivational</option>
-    </select>
+  class="w-full p-3 rounded-xl bg-white/10 text-white border border-white/20 
+  focus:border-purple-400 backdrop-blur-xl mb-4">
 
-    <!-- Generate Button -->
+  <option value="happy" class="text-black">Happy</option>
+  <option value="sad" class="text-black">Sad</option>
+  <option value="stressed" class="text-black">Stressed</option>
+  <option value="angry" class="text-black">Angry</option>
+  <option value="neutral" class="text-black">Neutral</option>
+  <option value="motivational" class="text-black">Motivational</option>
+
+  </select>
+
+
     <button onclick="getQuote()" 
       class="w-full py-3 bg-gradient-to-r from-indigo-500 to-purple-600 
       rounded-xl shadow-[0_0_30px_#8b5cf6] hover:shadow-[0_0_55px_#a855f7]
@@ -105,18 +108,25 @@
       Generate Quote
     </button>
 
-    <!-- QUOTE -->
     <p id="quoteDisplay"
       class="mt-6 text-xl font-bold opacity-0 transition duration-500 drop-shadow-[0_0_12px_#a855f7aa]"></p>
 
-    <!-- SHARE & SAVE -->
+    <!-- VOLUME SLIDER -->
+    <div class="mt-4 flex flex-col items-center">
+      <input type="range" id="volumeSlider" min="0" max="100" value="30" 
+        class="w-40 accent-purple-500 cursor-pointer">
+      <p class="text-sm opacity-60 mt-1">Music Volume</p>
+    </div>
+
     <button id="shareBtn"
-      class="mt-4 px-4 py-2 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 backdrop-blur-lg">
+      class="mt-4 px-4 py-2 bg-white/10 border border-white/20 
+      rounded-xl hover:bg-white/20 backdrop-blur-lg">
       📤 Share Quote
     </button>
 
     <button id="saveBtn"
-      class="mt-2 px-4 py-2 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 backdrop-blur-lg">
+      class="mt-2 px-4 py-2 bg-white/10 border border-white/20 
+      rounded-xl hover:bg-white/20 backdrop-blur-lg">
       💾 Save as Image
     </button>
   </div>
@@ -124,18 +134,19 @@
   <script src="quotes.js"></script>
 
   <script>
-    // Typewriter
-    function typeText(element, text) {
-      element.innerHTML = "";
+
+    /* TYPEWRITER */
+    function typeText(el, txt) {
+      el.innerHTML = "";
       let i = 0;
-      let interval = setInterval(() => {
-        element.innerHTML += text.charAt(i);
+      let t = setInterval(() => {
+        el.innerHTML += txt[i];
         i++;
-        if (i === text.length) clearInterval(interval);
+        if (i === txt.length) clearInterval(t);
       }, 30);
     }
 
-    // Fetch Quote + CLICK SOUND
+    /* FETCH QUOTE */
     function getQuote() {
       const mood = document.getElementById("mood").value;
       fetch(`http://localhost:5000/quotes/${mood}`)
@@ -144,32 +155,25 @@
           clickSound.currentTime = 0;
           clickSound.play();
 
-          const quoteBox = document.getElementById("quoteDisplay");
-          quoteBox.style.opacity = 0;
+          const q = document.getElementById("quoteDisplay");
+          q.style.opacity = 0;
 
           setTimeout(() => {
-            typeText(quoteBox, data.quote);
-            quoteBox.style.opacity = 1;
+            typeText(q, data.quote);
+            q.style.opacity = 1;
           }, 200);
         });
     }
 
-    // Parallax PC
-    document.addEventListener("mousemove", (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 20;
-      const y = (e.clientY / window.innerHeight - 0.5) * 20;
-      document.getElementById("parallax").style.transform = `translate(${x}px, ${y}px)`;
+    /* PARALLAX */
+    document.addEventListener("mousemove", e => {
+      const x = (e.clientX / innerWidth - 0.5) * 20;
+      const y = (e.clientY / innerHeight - 0.5) * 20;
+      parallax.style.transform = `translate(${x}px, ${y}px)`;
     });
 
-    // Parallax Mobile
-    document.addEventListener("touchmove", (e) => {
-      const x = (e.touches[0].clientX / window.innerWidth - 0.5) * 20;
-      const y = (e.touches[0].clientY / window.innerHeight - 0.5) * 20;
-      document.getElementById("parallax").style.transform = `translate(${x}px, ${y}px)`;
-    });
-
-    // Cursor Trail
-    document.addEventListener("mousemove", (e) => {
+    /* CURSOR TRAIL */
+    document.addEventListener("mousemove", e => {
       let dot = document.createElement("div");
       dot.className = "cursor-dot";
       dot.style.left = e.pageX + "px";
@@ -178,94 +182,89 @@
       setTimeout(() => dot.remove(), 500);
     });
 
-    // Dark Mode
-    document.getElementById("toggleMode").onclick = () =>
+    /* DARK MODE */
+    const modeBtn = document.getElementById("toggleMode");
+    modeBtn.addEventListener("click", () => {
       document.body.classList.toggle("light");
+      modeBtn.innerText = document.body.classList.contains("light")
+        ? "🌙 Dark Mode"
+        : "☀️ Light Mode";
+    });
 
-
-    /* ⭐ MUSIC CONTROL FIXED */
-    const musicBtn = document.getElementById("musicBtn");
+    /* MUSIC TOGGLE */
     let musicOn = false;
-
     musicBtn.addEventListener("click", () => {
       if (!musicOn) {
         bgMusic.volume = 0;
         bgMusic.play();
-
         let fade = setInterval(() => {
-          if (bgMusic.volume < 0.3) {
-            bgMusic.volume += 0.02;
-          } else clearInterval(fade);
+          if (bgMusic.volume < 0.3) bgMusic.volume += 0.02;
+          else clearInterval(fade);
         }, 120);
-
-        musicBtn.innerText = "🔈 Music On";
         musicOn = true;
-
       } else {
         bgMusic.pause();
-        musicBtn.innerText = "🎵 Music";
         musicOn = false;
       }
     });
 
-    /* ⭐ MOBILE AUDIO UNLOCK */
+    /* VOLUME SLIDER */
+    document.getElementById("volumeSlider").addEventListener("input", e => {
+      bgMusic.volume = e.target.value / 100;
+    });
+
+    /* AUDIO UNLOCK (MOBILE) */
     document.addEventListener("DOMContentLoaded", () => {
       const unlock = () => {
         clickSound.play().then(() => {
-          clickSound.pause();
-          clickSound.currentTime = 0;
+          clickSound.pause(); clickSound.currentTime = 0;
         });
-
         bgMusic.play().then(() => {
-          bgMusic.pause();
-          bgMusic.currentTime = 0;
+          bgMusic.pause(); bgMusic.currentTime = 0;
         });
-
         document.body.removeEventListener("click", unlock);
       };
       document.body.addEventListener("click", unlock);
     });
 
-    // Theme Randomizer
+    /* THEME COLOR SWITCH */
     const themes = ["#4b1fa7", "#ff0066", "#0080ff", "#00ffaa"];
-    document.getElementById("themeBtn").onclick = () => {
-      let color = themes[Math.floor(Math.random() * themes.length)];
-      document.getElementById("nebula").style.background =
-        `radial-gradient(circle at center, ${color}77, #000)`;
+    themeBtn.onclick = () => {
+      let c = themes[Math.floor(Math.random()*themes.length)];
+      nebula.style.background =
+        `radial-gradient(circle at center, ${c}77, #000)`;
     };
 
-    // Meteor Generator
+    /* AUTO METEORS */
     setInterval(() => {
-      let meteor = document.createElement("div");
-      meteor.className = "meteor";
-      document.getElementById("dynamicMeteors").appendChild(meteor);
-      setTimeout(() => meteor.remove(), 3000);
-    }, 2000);
+      let m = document.createElement("div");
+      m.className = "meteor";
+      dynamicMeteors.appendChild(m);
+      setTimeout(() => m.remove(), 3500);
+    }, 3000);
 
-    // Save as Image
-    document.getElementById("saveBtn").onclick = () => {
-      html2canvas(document.querySelector(".cardFloat")).then(canvas => {
-        let link = document.createElement("a");
-        link.download = "VisiFlow-quote.png";
-        link.href = canvas.toDataURL();
-        link.click();
+    /* SAVE IMAGE */
+    saveBtn.onclick = () => {
+      html2canvas(document.querySelector(".cardFloat")).then(c => {
+        let l = document.createElement("a");
+        l.download = "VisiFlow-quote.png";
+        l.href = c.toDataURL();
+        l.click();
       });
     };
 
-    // Share Quote
-    document.getElementById("shareBtn").onclick = () => {
-      const quote = document.getElementById("quoteDisplay").innerText;
-      const url = `https://wa.me/?text=${encodeURIComponent(quote)}`;
-      window.open(url, "_blank");
+    /* SHARE */
+    shareBtn.onclick = () => {
+      const q = quoteDisplay.innerText;
+      window.open(`https://wa.me/?text=${encodeURIComponent(q)}`, "_blank");
     };
 
-    // Loading Remove
+    /* REMOVE LOADING */
     setTimeout(() => {
-      document.getElementById("loadingScreen").style.opacity = "0";
-      setTimeout(() => {
-        document.getElementById("loadingScreen").remove();
-      }, 800);
+      loadingScreen.style.opacity = "0";
+      setTimeout(() => loadingScreen.remove(), 700);
     }, 2500);
+
   </script>
 </body>
 </html>
