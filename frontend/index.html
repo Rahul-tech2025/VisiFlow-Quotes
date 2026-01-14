@@ -6,6 +6,7 @@
   <title>VisiFlow Quotes – Galaxy Ultra</title>
   <link rel="stylesheet" href="output.css" />
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <link rel ="icon" type="image/x-icon" href="favicon.ico"
 </head>
 
 <body class="relative min-h-screen overflow-hidden bg-black text-white">
@@ -131,7 +132,7 @@
     </button>
   </div>
 
-  <script src="quotes.js"></script>
+  <!-- <script src="quotes.js"></script> -->
 
   <script>
 
@@ -147,23 +148,28 @@
     }
 
     /* FETCH QUOTE */
-    function getQuote() {
-      const mood = document.getElementById("mood").value;
-      fetch(`http://localhost:5000/quotes/${mood}`)
-        .then(res => res.json())
-        .then(data => {
-          clickSound.currentTime = 0;
-          clickSound.play();
+  function getQuote() {
+  const mood = document.getElementById("mood").value;
 
-          const q = document.getElementById("quoteDisplay");
-          q.style.opacity = 0;
+  fetch(`https://visiflow-backend.onrender.com/quotes/${mood}`)
+    .then(res => res.json())
+    .then(data => {
+      clickSound.currentTime = 0;
+      clickSound.play();
 
-          setTimeout(() => {
-            typeText(q, data.quote);
-            q.style.opacity = 1;
-          }, 200);
-        });
-    }
+      const q = document.getElementById("quoteDisplay");
+      q.style.opacity = 0;
+
+      setTimeout(() => {
+        typeText(q, data.quote);
+        q.style.opacity = 1;
+      }, 200);
+    })
+    .catch(err => {
+      console.error("API error:", err);
+    });
+}
+
 
     /* PARALLAX */
     document.addEventListener("mousemove", e => {
