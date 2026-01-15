@@ -167,6 +167,17 @@ body.light {
 .planet1-wrap { top: 10%; left: 5%; }
 .planet2-wrap { bottom: 12%; right: 6%; }
 
+/* Mobile adjustments */
+@media (max-width: 640px) {
+  .planet-wrap {
+    width: 120px;
+    height: 120px;
+  }
+  .planet1-wrap { top: 5%; left: -10px; }
+  .planet2-wrap { bottom: 5%; right: -10px; }
+  .cardFloat { margin-top: 10vh; margin-bottom: 2rem; }
+}
+
 /* More visible in dark */
 .planet2-wrap img {
   filter: brightness(1) contrast(1);
