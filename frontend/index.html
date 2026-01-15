@@ -151,7 +151,9 @@
   function getQuote() {
   const mood = document.getElementById("mood").value;
 
-  fetch(`https://visiflow-backend.onrender.com/quotes/${mood}`)
+  // Use relative path for Vercel, fallback to Render if needed (or assume proxy)
+  // For Vercel deployment, /api/... is routed to backend.
+  fetch(`/api/quotes/${mood}`)
     .then(res => res.json())
     .then(data => {
       clickSound.currentTime = 0;
