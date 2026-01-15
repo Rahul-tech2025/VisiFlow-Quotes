@@ -2,13 +2,13 @@
 
 A beautiful, cosmic-themed quote generator application that provides quotes based on your mood. Features a stunning UI with parallax effects, animations, and soundscapes.
 
-![VisiFlow Preview](https://visiflow-quotes.vercel.app/favicon.ico)
+![VisiFlow Preview](https://visiflow-quotes-rahul.vercel.app/favicon.ico)
 
 ## 🚀 Live Demo
-**[https://visiflow-quotes.vercel.app](https://visiflow-quotes.vercel.app)**
+**[https://visiflow-quotes-rahul.vercel.app](https://visiflow-quotes-rahul.vercel.app)**
 
 ## ✨ Features
--   **Mood-based Quotes**: Select from Happy, Sad, Stressed, Angry, and more.
+-   **Mood-based Quotes**: Select from Happy, Sad, Stressed, Angry, Neutral, and Motivational.
 -   **Immersive Audio**: Background space lofi music and sound effects.
 -   **Visual Effects**:
     -   Parallax mouse movement.
@@ -20,7 +20,7 @@ A beautiful, cosmic-themed quote generator application that provides quotes base
 
 ## 🛠️ Tech Stack
 -   **Frontend**: HTML5, Vanilla JavaScript, TailwindCSS.
--   **Backend**: Node.js, Express.js (Serverless on Vercel).
+-   **Backend**: Node.js, Express.js (Serverless on Vercel), Helmet, Express Rate Limit.
 -   **Deployment**: Vercel (Monorepo structure).
 
 ## 📦 Setup Locally
@@ -42,6 +42,7 @@ A beautiful, cosmic-themed quote generator application that provides quotes base
     npm run build
     npx serve .
     ```
+    *Note: The `build` command compiles TailwindCSS.*
 
 4.  **Backend (Optional for local)**
     The frontend is configured to talk to the live Vercel backend. To run backend locally:
