@@ -7,21 +7,42 @@
   border-top-color: transparent;
   animation: warpSpin 1s linear infinite, warpPulse 2s ease-in-out infinite;
 }
-@keyframes warpSpin { 
-  from { transform: rotate(0); } 
-  to { transform: rotate(360deg); }
+
+@keyframes warpSpin {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
+
 @keyframes warpPulse {
-  0% { box-shadow: 0 0 5px #a855f7; }
-  50% { box-shadow: 0 0 30px #c084fc; }
-  100% { box-shadow: 0 0 5px #a855f7; }
+  0% {
+    box-shadow: 0 0 5px #a855f7;
+  }
+
+  50% {
+    box-shadow: 0 0 30px #c084fc;
+  }
+
+  100% {
+    box-shadow: 0 0 5px #a855f7;
+  }
 }
 
 /* Stars */
 @keyframes stars {
-  0% { background-position: 0 0; }
-  100% { background-position: -2000px 2000px; }
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: -2000px 2000px;
+  }
 }
+
 #stars {
   background-image: url("https://raw.githubusercontent.com/rajatdiptabiswas/AssetsCDN/main/stars/starfield.png");
   background-size: cover;
@@ -30,19 +51,47 @@
 
 /* Aurora */
 @keyframes aurora {
-  0% { opacity: 0.2; transform: translateY(0); }
-  50% { opacity: 0.45; transform: translateY(-20px); }
-  100% { opacity: 0.2; transform: translateY(0); }
+  0% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 0.45;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
 }
-.animate-aurora { animation: aurora 6s ease-in-out infinite; }
+
+.animate-aurora {
+  animation: aurora 6s ease-in-out infinite;
+}
 
 /* Nebula swirl */
 @keyframes swirl {
-  0% { transform: rotate(0) scale(1); opacity: 0.4; }
-  50% { transform: rotate(180deg) scale(1.3); opacity: 0.8; }
-  100% { transform: rotate(360deg) scale(1); opacity: 0.4; }
+  0% {
+    transform: rotate(0) scale(1);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.3);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+    opacity: 0.4;
+  }
 }
-.animate-swirl { animation: swirl 25s linear infinite; }
+
+.animate-swirl {
+  animation: swirl 25s linear infinite;
+}
 
 /* Meteors */
 .meteor {
@@ -54,9 +103,15 @@
   transform: rotate(45deg);
   animation: meteorFall 2.2s linear infinite;
 }
+
 @keyframes meteorFall {
-  from { transform: translate(-10vw, -10vh) rotate(45deg); }
-  to { transform: translate(60vw, 80vh) rotate(45deg); }
+  from {
+    transform: translate(-10vw, -10vh) rotate(45deg);
+  }
+
+  to {
+    transform: translate(60vw, 80vh) rotate(45deg);
+  }
 }
 
 /* Old float planets (kept for code matching) */
@@ -66,10 +121,19 @@
   opacity: 0.7;
   animation: float 10s ease-in-out infinite;
 }
+
 @keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 /* Orbit rings */
@@ -80,20 +144,46 @@
   animation: orbitRotate 20s linear infinite;
   pointer-events: none;
 }
-.orbit1 { width: 300px; height: 300px; top: 20%; left: 10%; }
-.orbit2 { width: 200px; height: 200px; bottom: 15%; right: 10%; }
-@keyframes orbitRotate { 
-  from { transform: rotate(0); } 
-  to { transform: rotate(360deg); }
+
+.orbit1 {
+  width: 300px;
+  height: 300px;
+  top: 20%;
+  left: 10%;
+}
+
+.orbit2 {
+  width: 200px;
+  height: 200px;
+  bottom: 15%;
+  right: 10%;
+}
+
+@keyframes orbitRotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Card float */
 .cardFloat {
   animation: cardFloat 6s ease-in-out infinite;
 }
+
 @keyframes cardFloat {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 /* Cursor trail */
@@ -108,9 +198,17 @@
   transform: translate(-50%, -50%);
   animation: fadeOut .5s linear forwards;
 }
+
 @keyframes fadeOut {
-  0% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(.3); }
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(.3);
+  }
 }
 
 /* Light mode */
@@ -131,18 +229,23 @@ body.light {
   justify-content: center;
   align-items: center;
 
-  border: 3px solid rgba(255,255,255,0.45);
-  box-shadow: 
-    0 0 25px rgba(255,255,255,0.45),
-    0 0 45px rgba(180,180,255,0.25),
-    0 0 70px rgba(200,200,255,0.15);
+  border: 3px solid rgba(255, 255, 255, 0.45);
+  box-shadow:
+    0 0 25px rgba(255, 255, 255, 0.45),
+    0 0 45px rgba(180, 180, 255, 0.25),
+    0 0 70px rgba(200, 200, 255, 0.15);
 
   animation: neon-rotate 20s linear infinite;
 }
 
 @keyframes neon-rotate {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ⭐ ONLY ZOOM CHANGE HERE */
@@ -153,19 +256,27 @@ body.light {
   object-position: center;
   border-radius: 50%;
 }
+
 .planet2-img {
   width: 100%;
   height: 100%;
   object-fit: fill;
   object-position: center;
- 
-  
+
+
 }
 
 
 /* Position planets */
-.planet1-wrap { top: 10%; left: 5%; }
-.planet2-wrap { bottom: 12%; right: 6%; }
+.planet1-wrap {
+  top: 10%;
+  left: 5%;
+}
+
+.planet2-wrap {
+  bottom: 12%;
+  right: 6%;
+}
 
 /* Mobile adjustments */
 @media (max-width: 640px) {
@@ -173,9 +284,21 @@ body.light {
     width: 120px;
     height: 120px;
   }
-  .planet1-wrap { top: 5%; left: -10px; }
-  .planet2-wrap { bottom: 5%; right: -10px; }
-  .cardFloat { margin-top: 10vh; margin-bottom: 2rem; }
+
+  .planet1-wrap {
+    top: 5%;
+    left: -10px;
+  }
+
+  .planet2-wrap {
+    bottom: 5%;
+    right: -10px;
+  }
+
+  .cardFloat {
+    margin-top: 10vh;
+    margin-bottom: 2rem;
+  }
 }
 
 /* More visible in dark */
@@ -186,3 +309,10 @@ body.light {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Mobile Touch Optimization */
+button,
+input,
+select {
+  touch-action: manipulation;
+}

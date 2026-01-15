@@ -139,11 +139,18 @@
     }
 
     /* FETCH QUOTE */
+    let isGenerating = false;
+    const generateBtn = document.querySelector("button[onclick='getQuote()']");
+
     function getQuote() {
+      if (isGenerating) return;
+      isGenerating = true;
+      generateBtn.disabled = true;
+      generateBtn.classList.add("opacity-50", "cursor-not-allowed");
+      generateBtn.innerText = "Generating...";
+
       const mood = document.getElementById("mood").value;
 
-      // Use relative path for Vercel, fallback to Render if needed (or assume proxy)
-      // For Vercel deployment, /api/... is routed to backend.
       fetch(`/api/quotes/${mood}`)
         .then(res => res.json())
         .then(data => {
@@ -156,10 +163,20 @@
           setTimeout(() => {
             typeText(q, data.quote);
             q.style.opacity = 1;
+            // Reset state after typing (approx calculation or fixed delay)
+            setTimeout(() => {
+              isGenerating = false;
+              generateBtn.disabled = false;
+              generateBtn.classList.remove("opacity-50", "cursor-not-allowed");
+              generateBtn.innerText = "Generate Quote";
+            }, data.quote.length * 30 + 500);
           }, 200);
         })
         .catch(err => {
           console.error("API error:", err);
+          isGenerating = false;
+          generateBtn.disabled = false;
+          generateBtn.innerText = "Try Again";
         });
     }
 
