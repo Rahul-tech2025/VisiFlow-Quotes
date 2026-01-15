@@ -25,7 +25,7 @@ const limiter = rateLimit({
 app.use(limiter);
 
 /* ✅ MAIN API — DO NOT CHANGE */
-app.get("/quotes/:mood", (req, res) => {
+app.get("/api/quotes/:mood", (req, res) => {
   const mood = req.params.mood.toLowerCase();
 
   if (!quotes[mood]) {
